@@ -1,16 +1,32 @@
 import React, { Component } from "react";
 import { compose } from "redux";
 
-import Card from "@material-ui/core/Card";
 import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+
+import Dish from "components/Dish";
 
 const styles = theme => ({
   root: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr 1fr"
+    display: "flex"
   },
-  card: {
-    margin: "20px"
+  dishWrapper: {
+    marginBottom: "10px"
+  },
+  "@media (max-width: 1199px)": {
+    root: {
+      display: "flex",
+      justifyContent: "space-around"
+    },
+    dishWrapper: {
+      display: "flex",
+      justifyContent: "space-around"
+    }
+  },
+  "@media (min-width: 960px) and (max-width: 1199px)": {
+    dishWrapper: {
+      maxWidth: "50%"
+    }
   }
 });
 
@@ -33,27 +49,27 @@ class List extends Component {
     const { classes } = this.props;
     return (
       <>
-        <div className={classes.root}>
+        <Grid
+          container
+          className={classes.root}
+          justify="space-between"
+          spacing={2}
+        >
           {this.props.listOfDishes
             .filter(dish => this.filter(dish))
-            .map(dish => (
-              <Card className={classes.card}>
-                <p>{dish.name}</p>
-                <p>
-                  Ingredients:
-                  {dish.ingredients
-                    .map(ingredient => ingredient.name)
-                    .join(", ")}
-                </p>
-                <p>
-                  Weight:
-                  {dish.ingredients
-                    .map(ingredient => ingredient.weight)
-                    .reduce((a, b) => a + b, 0)}
-                </p>
-              </Card>
+            .map((dish, idx) => (
+              <Grid
+                key={idx}
+                className={classes.dishWrapper}
+                item
+                xs={12}
+                md={4}
+                lg={4}
+              >
+                <Dish dishName={dish.name} />
+              </Grid>
             ))}
-        </div>
+        </Grid>
       </>
     );
   }

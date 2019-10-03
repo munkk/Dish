@@ -1,14 +1,55 @@
 body {
   margin: 0;
-  background: #f9fafc;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-right: 0 !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+h1 {
+  font-family: "Source Serif Pro Bold";
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 50px;
+  letter-spacing: -1.8px;
+}
+
+h2 {
+  font-family: "Source Serif Pro Bold";
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 30px;
+  letter-spacing: -1.1px;
+}
+
+h3 {
+  font-family: "Source Serif Regular";
+  font-size: 20px;
+  letter-spacing: -0.7px;
+}
+
+p,
+span {
+  font-family: "Source Serif Pro Bold";
+  font-size: 17px;
+  letter-spacing: -0.6px;
+}
+
+@font-face {
+  font-family: "Source Serif Pro";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../src/assets/SourceSerifPro600.ttf");
+}
+
+@font-face {
+  font-family: "Source Serif Pro Bold";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../src/assets/SourceSerifPro700.ttf");
+}
+
+@font-face {
+  font-family: "Source Serif Regular";
+  font-style: normal;
+  src: url("../src/assets/SourceSerifProregular.ttf");
 }

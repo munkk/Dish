@@ -1,22 +1,89 @@
 import React, { Component } from "react";
-import "./App.css";
+import { compose } from "redux";
 
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 
+import "./App.css";
 import Navbar from "components/Navbar";
 import AddDish from "components/AddDish";
 import List from "components/List";
 import { generateDish } from "services/dishesGenerator";
+import NavbarImg from "assets/Navbar.png";
 
 const customTheme = createMuiTheme({
   palette: {
     primary: {
-      main: "#1F9AFF"
+      main: "#ffb53a"
     },
     secondary: {
-      main: "#f44336"
+      main: "#ffffff"
     }
+  }
+});
+
+const styles = theme => ({
+  sectionHeader: {
+    backgroundImage: `url(${NavbarImg})`,
+    minHeight: "300px",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    "& div": {
+      width: "80%",
+      maxWidth: "952px",
+      margin: "0 auto",
+      position: "relative",
+      "& span": {
+        position: "absolute",
+        left: "0",
+        top: "154px",
+        fontSize: "50px",
+        fontWeight: "bold",
+        color: "white"
+      }
+    }
+  },
+  sectionCenter: {
+    position: "relative",
+    width: "80%",
+    maxWidth: "952px",
+    margin: "0 auto",
+    display: "flex",
+    justifyContent: "space-between",
+    "& > div": {
+      textAlign: "initial",
+      position: "relative",
+      width: "100%",
+      margin: "0px 0 40px 0",
+      "& > div": {
+        position: "absolute",
+        width: "9px",
+        height: "50px",
+        backgroundColor: "#ffb53a",
+        top: "31px",
+        left: "-17px"
+      },
+      "& > p": {
+        fontSize: "20px",
+        fontFamily: "Source Serif Pro Regular",
+        position: "absolute",
+        top: "50px"
+      },
+      "& > h1": {
+        fontSize: "30px",
+        fontWeight: "bold"
+      }
+    },
+    "& button": {
+      top: "50px"
+    }
+  },
+  sectionList: {
+    width: "80%",
+    maxWidth: "952px",
+    margin: "0 auto"
   }
 });
 
@@ -79,23 +146,37 @@ class App extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <ThemeProvider theme={customTheme}>
         <div className="App">
           {/* The app is too small to use Redux here */}
 
           <Navbar onFilterInput={value => this.setState({ filterBy: value })} />
+          <section className={classes.sectionHeader}>
+            <div>
+              <span>Menu</span>
+            </div>
+          </section>
+          <section className={classes.sectionCenter}>
+            <div>
+              <div></div>
+              <h1>Meat Dishes</h1>
+              <p>Some of the best dishes meat dishes from worldwide</p>
+            </div>
+            <AddDish addNewDish={newDish => this.addNewDish(newDish)} />
+          </section>
 
-          <AddDish addNewDish={newDish => this.addNewDish(newDish)} />
-
-          <List
-            listOfDishes={this.state.listOfDishes}
-            filterBy={this.state.filterBy}
-          />
+          <section className={classes.sectionList}>
+            <List
+              listOfDishes={this.state.listOfDishes}
+              filterBy={this.state.filterBy}
+            />
+          </section>
         </div>
       </ThemeProvider>
     );
   }
 }
 
-export default App;
+export default compose(withStyles(styles))(App);

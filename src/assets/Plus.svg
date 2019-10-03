@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="16" height="16" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Combined_Shape" data-name="Combined Shape" d="M7,15V9H1A1,1,0,1,1,1,7H7V1A1,1,0,1,1,9,1V7h6a1,1,0,0,1,0,2H9v6a1,1,0,1,1-2,0Z" transform="translate(4 4)"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect width="24" height="24" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Icon" clip-path="url(#clip-path)">
+    <path id="Combined_Shape-2" data-name="Combined Shape" d="M7,15V9H1A1,1,0,1,1,1,7H7V1A1,1,0,1,1,9,1V7h6a1,1,0,0,1,0,2H9v6a1,1,0,1,1-2,0Z"/>
+    <g transform="translate(-4 -4)" clip-path="url(#clip-path-2)">
+      <g id="COLOR_black" data-name="COLOR/ black" clip-path="url(#clip-path-3)">
+        <rect id="Rectangle" width="24" height="24" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>
